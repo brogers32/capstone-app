@@ -1,16 +1,9 @@
 const db = require("../db/queries.js");
 
-const renderLogin = async (req, res) => {
-    console.log("in render login");
-    const tableData = await db.getAllRows();
-    console.log(tableData);
-    res.send(tableData);
-};
-
 const authenticateUser = async (req, res) => {
     const email = req.body.email;
     const pass = req.body.password;
-    const rows = await db.getUser(email);
+    const rows = await db.getLoginInfo(email);
     if (rows.length > 1) {
         res.send({auth: false})
     }
@@ -28,4 +21,4 @@ const authenticateUser = async (req, res) => {
     }
 }
 
-module.exports = { renderLogin, authenticateUser };
+module.exports = { authenticateUser };

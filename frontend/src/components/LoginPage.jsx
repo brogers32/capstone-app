@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { React, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 
 export const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const url = "http://localhost:3005";
@@ -16,7 +16,7 @@ export const LoginPage = () => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ email: email, password: password }),
+      body: JSON.stringify({ email: email, password: password })
     });
     setEmail("");
     setPassword("");
